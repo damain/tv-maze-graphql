@@ -16,4 +16,5 @@ npm install
 npm run start
 ```
 
-
+It will run open a GraphQL playground at http://localhost:4000
+where you can access documentation

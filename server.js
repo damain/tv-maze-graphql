@@ -4,7 +4,9 @@ const {ShowsApi} = require('./showsApi')
 const {schema: typeDefs} = require('./types')
 const {resolvers} = require('./resolvers')
 
-const server = new ApolloServer({typeDefs, resolvers,
+const server = new ApolloServer({
+    typeDefs, 
+    resolvers,
     dataSources: ()=>{
         return {
             showsAPI: new ShowsApi()

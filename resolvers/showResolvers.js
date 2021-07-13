@@ -29,7 +29,10 @@ const showResolver = {
         },
         cast:async (parent,args, {dataSources})=>{ 
             return dataSources.showsAPI.getCast(parent)
-        }
+        },
+        crew:async (parent,args, {dataSources})=>{ 
+            return dataSources.showsAPI.getCrew(parent)
+        },
     }
 }
 

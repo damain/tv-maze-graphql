@@ -70,6 +70,7 @@ const schema = gql`
         weight: Int
         episodes: [Episodes]
         cast: [Cast]
+        crew:[Crew]
     }
 
     type PersonImages{
@@ -128,6 +129,11 @@ const schema = gql`
         name: String
         url: String
         _links: Link
+    }
+
+    type Crew{
+        person: Person
+        type: String
     }
 `
 module.exports = {schema}

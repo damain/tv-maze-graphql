@@ -21,6 +21,9 @@ class ShowsApi extends RESTDataSource{
     async getCast(show){
         return await this.get(`shows/${show.id}/cast`);
     };
+    async getCrew(show){
+        return await this.get(`shows/${show.id}/crew`);
+    };
 }
 
 module.exports = {ShowsApi}

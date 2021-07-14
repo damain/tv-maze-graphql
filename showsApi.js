@@ -21,8 +21,21 @@ class ShowsApi extends RESTDataSource{
     async getCast(show){
         return await this.get(`shows/${show.id}/cast`);
     };
+
     async getCrew(show){
         return await this.get(`shows/${show.id}/crew`);
+    };
+
+    async getSeasons(show){
+        return await this.get(`shows/${show.id}/seasons`);
+    };
+    
+    async getDaysSchedule(date, country){
+        return await this.get(`schedule?country=${country}&date=${date}`);
+    };
+
+    async getFullSchedule(){
+        return await this.get(`schedule/full`);
     };
 }
 

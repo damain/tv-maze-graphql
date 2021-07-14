@@ -7,12 +7,13 @@ const showResolver = {
             //console.log(dataSources)
             return dataSources.showsAPI.getShows(name)
         },
-        // Shows: async ({name, id})=>{ 
-        //     let result  =  await fetch(`http://api.tvmaze.com/search/shows?q=${name}`)
-        //     let json = await result.json()
-        //     console.log(json)
-        //     return json
-        // },
+        schedule: async (_,{date, country}, {dataSources})=>{ 
+            if (date){
+                return dataSources.showsAPI.getDaysSchedule(date, country)
+            }else{
+                return dataSources.showsAPI.getFullSchedule()
+            }
+        },
         show: async (_,{name}, {dataSources})=>{ 
             return dataSources.showsAPI.getShow(name)
         },
@@ -32,6 +33,9 @@ const showResolver = {
         },
         crew:async (parent,args, {dataSources})=>{ 
             return dataSources.showsAPI.getCrew(parent)
+        },
+        seasons:async (parent,args, {dataSources})=>{ 
+            return dataSources.showsAPI.getSeasons(parent)
         },
     }
 }

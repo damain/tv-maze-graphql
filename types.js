@@ -7,6 +7,7 @@ const schema = gql`
         shows(name: String): [ShowResult]
         show(name: String, id: Int): Show
         people(name: String): [PeopleResult]
+        schedule(date: String, country: String): [Schedule]
     }
 
     type ShowImages{
@@ -30,7 +31,7 @@ const schema = gql`
         average: Float
     }
 
-    type Schedule {
+    type ScheduleDetails {
         days:[String]
         time: String
     }
@@ -60,7 +61,7 @@ const schema = gql`
         premiered: String
         rating: Rating
         runtime: Int
-        schedule: Schedule
+        schedule: ScheduleDetails
         status: String
         summary: String
         type: String
@@ -71,6 +72,7 @@ const schema = gql`
         episodes: [Episodes]
         cast: [Cast]
         crew:[Crew]
+        seasons: [Season]
     }
 
     type PersonImages{
@@ -134,6 +136,41 @@ const schema = gql`
     type Crew{
         person: Person
         type: String
+    }
+
+    type Season{
+        endDate: String
+        episodeOrder: Int
+        id: Int
+        image: ShowImages
+        name: String
+        network: Country
+        number: Int
+        premiereDate: String
+        summary: String
+        url: String
+        webChannel: String
+        _link:Link
+    }
+
+    type Schedule{
+        airdate: String
+        airstamp: String
+        airtime: String
+        id: Int
+        image: ShowImages
+        name: String
+        number: Int
+        runtime: Int
+        season: Int
+        summary: String
+        type: String
+        url: String
+        _embedded: ScheduledShow
+    }
+
+    type ScheduledShow{
+        show:Show
     }
 `
 module.exports = {schema}
